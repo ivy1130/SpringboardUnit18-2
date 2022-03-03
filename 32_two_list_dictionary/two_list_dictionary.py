@@ -15,3 +15,20 @@ def two_list_dictionary(keys, values):
         >>> two_list_dictionary(['a', 'b', 'c'], [1, 2, 3, 4])
         {'a': 1, 'b': 2, 'c': 3}
    """
+
+    if len(keys) == len(values):
+        return {keys[i]: values[i] for i in range(len(keys))}
+    elif len(keys) > len(values):
+        res = dict()
+        for i in range(len(values)):
+            res[keys[i]] = values[i]
+        for i in (range(len(keys) - len(values))):
+            res[keys[i + len(values)]] = None
+        return res
+    else:
+        return {keys[i]: values[i] for i in range(len(keys))}
+
+
+    # Solution below, but doesn't work for the use case of fewer keys, because it will add an additional key of None
+    # from itertools import zip_longest
+    # return dict(zip_longest(keys, values))

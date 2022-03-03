@@ -19,3 +19,11 @@ def find_greater_numbers(nums):
         >>> find_greater_numbers([])
         0
     """
+
+    import itertools
+    count = 0
+    for a, b in itertools.combinations(nums, 2):
+        if a < b:
+            count += 1
+    return count
+        

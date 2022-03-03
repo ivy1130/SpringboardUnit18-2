@@ -21,3 +21,18 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+
+    done = set()
+    for num in nums:
+        diff = goal - num
+        if diff in done:
+            return (diff, num)
+        else:
+            done.add(num)
+    return ()        
+
+    # from itertools import combinations
+
+    # combos = list(combinations(nums, 2))
+    # solutions = [combo for combo in combos if sum(combo) == goal]
+    # return (solutions[0] if len(solutions) > 0 else ())
